@@ -105,8 +105,8 @@ const ShoshanDevShot = () => {
   useEffect(() => {
     mount();
     // for setting admin name
-    const nm = localStorage.getItem(`${process.env.ENQ_N}`);
-    let bytes = CryptoJS.AES.decrypt(nm, process.env.SECRET_KEY);
+    const nm = localStorage.getItem(`ngaLan`);
+    let bytes = CryptoJS.AES.decrypt(nm, "my-secret-key@1234");
     let nms = bytes.toString(CryptoJS.enc.Utf8);
     setAdminName(nms);
   }, []);

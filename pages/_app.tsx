@@ -34,7 +34,7 @@ function MyApp({ Component, pageProps }: any) {
   });
   useEffect(() => {
     let uid = localStorage.getItem("uId");
-    let nm = localStorage.getItem(`${process.env.ENQ_N}`);
+    let nm = localStorage.getItem(`ngaLan`);
     let tkn = localStorage.getItem(`tImaan${uid}`);
     nm &&
       tkn &&

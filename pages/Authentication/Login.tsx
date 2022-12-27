@@ -4,23 +4,23 @@ import { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import commonStyles from "../../styles/common.module.css";
 const Login = () => {
-  // const firebaseConfig = {
-  //   apiKey: "AIzaSyCoFJ3yQQ3N1Ci0CWBSccn53ShaYUgUmYU",
-  //   authDomain: "managementsnk.firebaseapp.com",
-  //   projectId: "managementsnk",
-  //   storageBucket: "managementsnk.appspot.com",
-  //   messagingSenderId: "610680333386",
-  //   appId: "1:610680333386:web:53abb4fb3f293bad0832b3"
-  // };
-
   const firebaseConfig = {
-    apiKey: process.env.API_KEY,
-    authDomain: process.env.AUTH_DOMAIN,
-    projectId: process.env.PROJECT_ID,
-    storageBucket: process.env.STORAGE_BUCKET,
-    messagingSenderId: process.env.MESSAGING_CENTER_ID,
-    appId: process.env.APP_ID,
+    apiKey: "AIzaSyCoFJ3yQQ3N1Ci0CWBSccn53ShaYUgUmYU",
+    authDomain: "managementsnk.firebaseapp.com",
+    projectId: "managementsnk",
+    storageBucket: "managementsnk.appspot.com",
+    messagingSenderId: "610680333386",
+    appId: "1:610680333386:web:53abb4fb3f293bad0832b3",
   };
+
+  // const firebaseConfig = {
+  //   apiKey: process.env.API_KEY,
+  //   authDomain: process.env.AUTH_DOMAIN,
+  //   projectId: process.env.PROJECT_ID,
+  //   storageBucket: process.env.STORAGE_BUCKET,
+  //   messagingSenderId: process.env.MESSAGING_CENTER_ID,
+  //   appId: process.env.APP_ID,
+  // };
 
   const CryptoJS = require("crypto-js");
   const [user, setUser] = useState<any>({
@@ -51,7 +51,7 @@ const Login = () => {
   // Sign In
   const handleSignIn = (e: any) => {
     // if auth data already exists, remove all for re-auth...
-    const nm = localStorage.getItem(`${process.env.ENQ_N}`);
+    const nm = localStorage.getItem(`ngaLan`);
     if (nm) {
       localStorage.clear();
     }
@@ -61,10 +61,10 @@ const Login = () => {
       .then((res) => {
         let encryptedName = CryptoJS.AES.encrypt(
           user.email,
-          process.env.SECRET_KEY
+          "my-secret-key@1234"
         ).toString();
         localStorage.setItem("uId", res.user.uid);
-        localStorage.setItem(`${process.env.ENQ_N}`, encryptedName); //name
+        localStorage.setItem(`ngaLan`, encryptedName); //name
         localStorage.setItem(`tImaan${res.user.uid}`, res.user.refreshToken);
         location.reload();
       })
@@ -86,8 +86,8 @@ const Login = () => {
   // set on the top ---- const CryptoJS = require("crypto-js");
 
   // for setting admin name
-  // const nm = localStorage.getItem(`${process.env.ENQ_N}`);
-  // let bytes = CryptoJS.AES.decrypt(nm, "process.env.SECRET_KEY");
+  // const nm = localStorage.getItem(`ngaLan`);
+  // let bytes = CryptoJS.AES.decrypt(nm, ""my-secret-key@1234"");
   // let nms = bytes.toString(CryptoJS.enc.Utf8);
   // setAdminName(nms);
 
