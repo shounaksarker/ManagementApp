@@ -1,0 +1,9 @@
+/* ----------- index tsx  --------- */
+.homeDash{
+    background: #CFD0D2;
+    min-height: 100vh;
+}
+/* ----------- app tsx  --------- */
+.zIndex{
+    z-index: 999;
+}

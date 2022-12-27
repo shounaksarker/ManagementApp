@@ -1,0 +1,12 @@
+.maxWidth50{
+    max-width: 50% !important;
+}
+.tblData{
+    max-height: 85vh;
+    overflow-y: scroll;
+
+}
+
+.minHeight35{
+    min-height: 35vh !important;
+}

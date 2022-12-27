@@ -1,0 +1,29 @@
+.status{
+    background: white;
+}
+.box{
+    border: 5px dashed black;
+    text-align: center;
+    font-size: 25px;
+}
+
+.clrBlu{
+    background-color: #007AFF;
+}
+.clrYlw{
+    background-color: #FEBF0F;
+}
+.clrGrn{
+    background-color: #2DA448;
+}
+
+.icon{
+    width: 12%;
+    position: relative;
+    left: 80%;
+}
+
+.view{
+    background-color: #CFD0D2;
+    cursor: pointer;
+}

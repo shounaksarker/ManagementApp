@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  user_id     Int       @id @default(autoincrement())
+  name        String
+  fatherName  String
+  nid         Int
+  mobiile     Int
+  image       String?
+  clearUpto    String?
+  paidAmount  Int?
+  dueAmount   String?
+  lastPayment DateTime?
+  type        String    @default("shop") //shope,home
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  Shop        Shop?     @relation(fields: [shopId], references: [shop_id])
+  shopId      Int?      @unique
+  Home        Home?     @relation(fields: [homeId], references: [home_id])
+  homeId      Int?      @unique
+  Payment     Payment[]
+}
+
+model Admin {
+  id        Int      @id @default(autoincrement())
+  name      String
+  password  String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+}
+
+model Shop {
+  shop_id      Int      @id @default(autoincrement())
+  ratePerMonth Int
+  users        User?
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+}
+
+model Home {
+  home_id      Int      @id @default(autoincrement())
+  ratePerMonth Int
+  users        User?
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+}
+
+model Payment {
+  id        Int       @id @default(autoincrement())
+  user      User?     @relation(fields: [userId], references: [user_id])
+  userId    Int?
+  amount    Int
+  date      DateTime
+  formDate  DateTime?
+  toDate    DateTime?
+  type      String?
+  status    String
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  Shoshan   Shoshan[]
+}
+
+model Shoshan {
+  id         Int      @id @default(autoincrement())
+  name       String?
+  fatherName String?
+  motherName String?
+  address    String?
+  reference  String?
+  relation   String?
+  amount     Int?
+  payment    Payment? @relation(fields: [paymentId], references: [id])
+  paymentId  Int?
+  type       String?
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+}

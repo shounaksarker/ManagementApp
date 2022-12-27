@@ -1,0 +1,10 @@
+.scroll{
+    max-height: 56vh ;
+    overflow-y: scroll ;
+}
+
+.border{
+    border: 3px lavender;
+    border-style: inset;
+    padding-top: 5px;
+}
