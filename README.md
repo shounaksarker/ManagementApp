@@ -14,3 +14,8 @@ This web app is responsible for managing all data of an religious organization's
 - Bootstrap
 - MySql (Prisma)
 - Shared hosting and Vercel
+
+
+## For Testing purpose
+Name: admin1
+password: admin1
